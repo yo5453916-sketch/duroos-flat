@@ -1,0 +1,25 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.duroos.app'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'com.duroos.app'
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    signingConfigs {
+        main {
+            storeFile rootProject.file('duroos.keystore')
+            storePassword 'duroos123'
+            keyAlias 'duroos'
+            keyPassword 'duroos123'
+        }
+    }
+    buildTypes {
+        debug { signingConfig signingConfigs.main }
+        release { signingConfig signingConfigs.main; minifyEnabled false }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
